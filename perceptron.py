@@ -77,5 +77,16 @@ print("predictions for Xor after training")
 for i in test_inputs:
     print(i," : ",Xor.predict(i)) 
 
-#The perceptron cannot implement Xor gate why?
+# The perceptron cannot implement Xor gate why?
+# perceptron with 2 inputs has x*w1 + y*w2
+# t is threshold
+# 1*w1 + 0*w2 >= t
+# 0*w1 + 1*w2 >= t
+# 0*w1 + 0*w2 < t
+# 1*w1 + 1*w2 < t
+# w1 >= t
+# w2 >= t
+# 0 < t
+# w1+w2 < t 
+# Contradiction occurs since w1 and w2 are >t then w1 + w2 cannot be <t
 
