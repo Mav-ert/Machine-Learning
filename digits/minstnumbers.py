@@ -68,7 +68,6 @@ def predict_digit(img):
 
     img = img.convert('L')
     img = ImageOps.invert(img)
-
     img = np.array(img)
     img = img.reshape(1,28,28,1)
     img = img/255.0
