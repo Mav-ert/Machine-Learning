@@ -2,7 +2,7 @@ from keras.models import load_model
 from tkinter import *
 import tkinter as tk
 import win32gui
-from PIL import ImageGrab, Image
+from PIL import ImageGrab, Image, ImageOps
 import numpy as np
 # import keras
 from tensorflow import keras
@@ -67,6 +67,8 @@ def predict_digit(img):
     img = img.resize((28,28))
 
     img = img.convert('L')
+    img = ImageOps.invert(img)
+
     img = np.array(img)
     img = img.reshape(1,28,28,1)
     img = img/255.0
@@ -81,9 +83,9 @@ class App(tk.Tk):
         
         # Creating elements
         self.canvas = tk.Canvas(self, width=300, height=300, bg = "white", cursor="cross")
-        self.label = tk.Label(self, text="Draw..", font=("Helvetica", 48))
-        self.classify_btn = tk.Button(self, text = "Recognise", command = self.classify_handwriting)   
-        self.button_clear = tk.Button(self, text = "Clear", command = self.clear_all)
+        self.label = tk.Label(self, text="Draw..", font=("Arial Bold", 48))
+        self.classify_btn = tk.Button(self, text = "recognise", command = self.classify_handwriting)   
+        self.button_clear = tk.Button(self, text = "clear", command = self.clear_all)
        
         # Grid structure
         self.canvas.grid(row=0, column=0, pady=2, sticky=W, )
