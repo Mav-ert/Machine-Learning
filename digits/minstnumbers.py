@@ -81,7 +81,7 @@ class App(tk.Tk):
         self.x = self.y = 0
         
         # Creating elements
-        self.canvas = tk.Canvas(self, width=300, height=300, bg = "white", cursor="cross")
+        self.canvas = tk.Canvas(self, width=280, height=280, bg = "white", cursor="cross")
         self.label = tk.Label(self, text="Draw..", font=("Arial Bold", 48))
         self.classify_btn = tk.Button(self, text = "recognise", command = self.classify_handwriting)   
         self.button_clear = tk.Button(self, text = "clear", command = self.clear_all)
