@@ -4,10 +4,8 @@ import numpy as np
 
 cap = cv2.VideoCapture(0)
 
-
 wCam = int(cap.get(3))
 hCam = int(cap.get(4))
-
 
 avg_frames = 5 
 prevGestures = [] # gestures calculated in previous frames
@@ -52,6 +50,8 @@ def gesture(f):
         return "4 fingers"
     elif f[0] < 0 and f[1] > 0 and f[2] > 0 and f[3] > 0 and f[4] < 0:
         return "3 fingers"
+    elif f[0] < 0 and f[1] < 0 and f[2] > 0 and f[3] < 0 and f[4] < 0:
+        return "Big OOOOF"
     else:
         return "No Gesture"
 
@@ -86,16 +86,6 @@ def straightFingers(hand, img):
             else:
                 openFingers.append(-1)
 
-            # Code below draws the two vectors from above
-            # cx, cy = int(lms[id].x * wCam), int(lms[id].y * hCam)
-            # cx2, cy2 = int(lms[id-2].x * wCam), int(lms[id-2].y * hCam)
-            # cx0, cy0 = int(lms[0].x * wCam), int(lms[0].y * hCam)
-            # cv2.line(img, (cx0, cy0), (cx2, cy2), (255, 0, 0), 2)
-            # if np.dot(fv,pv) >= .65:
-            #     cv2.line(img, (cx, cy), (cx2, cy2), (0, 255, 0), 2)
-            # else:
-            #     cv2.line(img, (cx, cy), (cx2, cy2), (0, 0, 255), 2)
-
         else: # for any other finger (not thumb)
             tipx, tipy = lms[id].x, lms[id].y  # x, and y of the finger tip
             x1, y1 = lms[id-2].x, lms[id-2].y  # x, and y of the joint 2 points below the finger tip
@@ -105,16 +95,6 @@ def straightFingers(hand, img):
             pv = [x1-x0, y1-y0]  # wrist to joint vector
             pv = normalize(pv)
             openFingers.append(np.dot(fv,pv))  # Calculates if the finger is open or closed
-
-            # Code below draws the two vectors from above
-            # cx, cy = int(lms[id].x * wCam), int(lms[id].y * hCam)
-            # cx2, cy2 = int(lms[id-2].x * wCam), int(lms[id-2].y * hCam)
-            # cx0, cy0 = int(lms[0].x * wCam), int(lms[0].y * hCam)
-            # cv2.line(img, (cx0, cy0), (cx2, cy2), (255, 0, 0), 2)
-            # if np.dot(fv,pv) >= 0:
-            #     cv2.line(img, (cx, cy), (cx2, cy2), (0, 255, 0), 2)
-            # else:
-            #     cv2.line(img, (cx, cy), (cx2, cy2), (0, 0, 255), 2)
 
     return openFingers
 

@@ -1,6 +1,5 @@
 #An implementation of perceptron based on description in Artificial Intelligence, A Guide For Thinking Humans by Melanie Mitchell
 
-from warnings import simplefilter
 import numpy as np
 import random
 
@@ -79,6 +78,10 @@ if __name__ == "__main__":
     print("predictions for Xor after training")
     for i in test_inputs:
         print(i," : ",Xor.predict(i)) 
+
+
+
+        
 # The perceptron cannot implement Xor gate why?
 # perceptron with 2 inputs has x*w1 + y*w2
 # t is threshold
