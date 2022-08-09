@@ -82,9 +82,10 @@ if __name__ == "__main__":
 
 
         
-# The perceptron cannot implement Xor gate why?
-# perceptron with 2 inputs has x*w1 + y*w2
-# t is threshold
+# The perceptron cannot implement Xor gate. Why?
+# perceptron with 2 inputs can be represented with the function x*w1 + y*w2 where x,y are the inputs and 
+# w1,w2 are the weights assigned to each of the inputs
+# let t be the threshold
 # 1*w1 + 0*w2 >= t
 # 0*w1 + 1*w2 >= t
 # 0*w1 + 0*w2 < t

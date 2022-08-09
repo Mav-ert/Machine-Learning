@@ -1,3 +1,4 @@
+# Perceptron implemented with the sigmoid function
 import numpy as np
 
 class Perceptron():
